@@ -1,0 +1,7 @@
+{% with request.resolver_match.url_name as url_name %}
+<ul>
+    <li><a class="{% if url_name == 'home-page' %} active {% endif %}" href="{% url 'home-page' %}">Home</a></li>
+    <li><a class="{% if url_name == 'about-page' %} active {% endif %}" href="{% url 'about-page' %}">About</a></li>
+    <li><a class="{% if url_name == 'contact-page' %} active {% endif %}" href="{% url 'contact-page' %}">Contact</a></li>
+</ul>
+{% endwith %}
