@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.home, name='home-page'),
     path('about', views.about, name='about-page'),
     path('contact', views.contact, name='contact-page'),
+    path('delete/<int:id>', views.deleteData, name='del-page'),
 ]
