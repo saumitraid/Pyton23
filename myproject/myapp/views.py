@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from . models import Student
+from . forms import MyRegFrm
 # Create your views here.
 
 def home(request):
@@ -44,3 +45,31 @@ def deleteData(request, id):
     except Exception as e:
         messages.error(request, 'Student data not delete successfully')
     return redirect('/about')
+
+def updateData(request, id):
+    if request.POST:
+        name=request.POST.get('name')
+        email_id=request.POST.get('email_id')
+        city=request.POST.get('city')
+        try:
+            Student.objects.filter(id=id).update(name=name, email_id=email_id, city=city)
+            messages.success(request, 'Student details update successfully')
+            return redirect('/about')
+        except Exception as e:
+            messages.error(request, 'Student details not update successfully')
+    else:
+        student=Student.objects.filter(id=id).get()
+    return render(request, 'myapp/update.html', {'student':student})
+
+def userReg(request):
+    if request.POST:
+        form=MyRegFrm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                messages.success(request, 'Registration is successfull')
+            except Exception as e:
+                messages.error(request, 'Registration is unsuccessfull')
+    else:
+        form=MyRegFrm()
+    return render(request, 'myapp/userReg.html', {'form':form})

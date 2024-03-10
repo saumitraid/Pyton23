@@ -6,4 +6,7 @@ urlpatterns = [
     path('about', views.about, name='about-page'),
     path('contact', views.contact, name='contact-page'),
     path('delete/<int:id>', views.deleteData, name='del-page'),
+    path('update/<int:id>', views.updateData, name='upd-page'),
+    path('reg/', views.userReg, name='reg-page'),
+
 ]

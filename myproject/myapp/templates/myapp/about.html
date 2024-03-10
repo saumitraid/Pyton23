@@ -10,6 +10,11 @@
 <body>
     {% include './navbar.html' %}
     <h2>All Students</h2>
+    {% if messages %}
+    {% for msg in messages %}
+        {{msg}}
+    {% endfor %}
+    {% endif %}
     {% if allStd %}
     <table border="1" cellpadding="7" cellspacing="0">
         <thead>
@@ -27,7 +32,7 @@
                     <td>{{rec.name}}</td>
                     <td>{{rec.email_id}}</td>
                     <td>{{rec.city}}</td>
-                    <td><button type="button">Update</button></td>
+                    <td><a href="/update/{{rec.id}}"><button type="button">Update</button></a></td>
                     <td><a href="/delete/{{rec.id}}">Delete</a></td>
                 </tr>
             {% endfor %}

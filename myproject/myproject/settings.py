@@ -77,11 +77,14 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'python23',
+        'NAME': 'python23_1',
         'HOST': 'localhost',
         'USER' : 'root',
         'PASSWROD' : '',
-        'PORT' : '3306'
+        'PORT' : '3306',
+        "OPTIONS": {
+                    "init_command": "SET default_storage_engine=INNODB",
+                }
     }
 }
 
@@ -126,3 +129,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL='myapp.CustomUser'
