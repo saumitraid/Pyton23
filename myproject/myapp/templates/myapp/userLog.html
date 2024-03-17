@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center">User Registration</h1>
+        <h1 class="text-center">User Login</h1>
         <div class="col-6">
             <form name="frm" method="post" novalidate>
                 {% csrf_token %}
@@ -22,11 +22,11 @@
                 {{frm}}
                 </div>
                 {% endfor %}
-                <input type="submit" name="ok" value="Save" class="btn btn-info">
+                <input type="submit" name="ok" value="Login" class="btn btn-info">
             </form>
-            {% if messages %}
-            {% for msg in messages %}
-                {{msg}}
+            {% if form.non_field_errors %}
+            {% for err in form.non_field_errors %}
+            {{err}}
             {% endfor %}
             {% endif %}
         </div>

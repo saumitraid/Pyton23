@@ -3,5 +3,10 @@
     <li><a class="{% if url_name == 'home-page' %} active {% endif %}" href="{% url 'home-page' %}">Home</a></li>
     <li><a class="{% if url_name == 'about-page' %} active {% endif %}" href="{% url 'about-page' %}">About</a></li>
     <li><a class="{% if url_name == 'contact-page' %} active {% endif %}" href="{% url 'contact-page' %}">Contact</a></li>
+    {% if request.user.is_authenticated %}
+    <li><a href="{% url 'logout-page' %}">Logout</a></li>
+    {% else %}
+    <li><a class="{% if url_name == 'log-page' %} active {% endif %}" href="{% url 'log-page' %}">Login</a></li>
+    {% endif %}
 </ul>
 {% endwith %}
