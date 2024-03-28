@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from . models import Student
+from . models import Student, Item
 from . forms import MyRegFrm, MyLogFrm
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
@@ -97,3 +97,7 @@ def userLog(request):
 def userLogout(request):
     logout(request)
     return redirect('/login')
+
+def allItems(request):
+    allItem=Item.objects.all()
+    return render(request, 'myapp/items.html', {'products':allItem})
